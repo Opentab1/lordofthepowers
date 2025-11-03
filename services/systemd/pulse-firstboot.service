@@ -2,7 +2,7 @@
 Description=Pulse first boot setup wizard
 After=network-online.target
 Wants=network-online.target
-ConditionPathExists=!/opt/pulse/.setup_done
+ConditionPathExists=!/opt/pulse/config/.wizard_complete
 
 [Service]
 Type=simple

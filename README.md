@@ -150,6 +150,21 @@ This will test each sensor individually and report status.
 
 ## 🐛 Troubleshooting
 
+### Display Not Loading After Installation
+
+If the display doesn't load after installation and reboot:
+
+```bash
+# Quick automated fix
+cd /opt/pulse
+sudo ./fix_display.sh
+
+# Or run diagnostics first
+./diagnose_display.sh
+```
+
+**See [DISPLAY_LOADING_FIX.md](DISPLAY_LOADING_FIX.md) for complete details.**
+
 ### Camera Not Working
 ```bash
 # Check camera
