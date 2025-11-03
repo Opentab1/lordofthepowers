@@ -290,16 +290,18 @@ try:
         status = 'OK' if present else 'Not Found'
         print(f'{symbol} {module}: {status}')
     print('='*50)
-except:
-    print('Hardware detection ran (raw output below):')
-    print(sys.stdin.read())
+except Exception as e:
+    print('Hardware detection ran (parsing output):')
+    for line in sys.stdin:
+        print(line.rstrip())
 " <<< "$DETECTION_OUTPUT"
     
     # Save to log directory
     echo "$DETECTION_OUTPUT" > /var/log/pulse/hardware_report.json
 else
     echo -e "${YELLOW}Warning: Hardware detection completed with warnings${NC}"
-    echo "Output saved to /var/log/pulse/hardware_report.json"
+    echo "$DETECTION_OUTPUT"
+    echo "$DETECTION_OUTPUT" > /var/log/pulse/hardware_report.json
 fi
 
 echo -e "${GREEN}"
