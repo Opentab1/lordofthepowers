@@ -107,7 +107,7 @@ if [ -f "./requirements.txt" ] && [ -d "./services/systemd" ] && [ -d "./dashboa
     cp -a . "$INSTALL_DIR/"
 else
     echo "Cloning repository from GitHub..."
-    git clone https://github.com/Opentab1/thefinale2.git "$INSTALL_DIR"
+    git clone https://github.com/Opentab1/lordofthepowers.git "$INSTALL_DIR"
 fi
 
 chown -R ${USER}:${USER} "$INSTALL_DIR"

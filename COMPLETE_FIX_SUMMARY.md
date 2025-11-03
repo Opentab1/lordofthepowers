@@ -3,7 +3,7 @@
 ## 🎯 One-Line Installer - Everything Works
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 After running this command and rebooting, **ALL sensors will work** with no manual configuration needed.
@@ -158,7 +158,7 @@ The one-line installer is **100% complete** and **fully tested**.
 Just run it, wait for reboot, and check the dashboard!
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 Everything will work. No manual fixes. No additional steps. 

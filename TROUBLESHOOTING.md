@@ -463,4 +463,4 @@ SELECT * FROM sensor_data ORDER BY timestamp DESC LIMIT 20;
 
 ---
 
-**Need more help?** Visit the [GitHub Discussions](https://github.com/Opentab1/thefinale2/discussions) or create an [issue](https://github.com/Opentab1/thefinale2/issues).
+**Need more help?** Visit the [GitHub Discussions](https://github.com/Opentab1/lordofthepowers/discussions) or create an [issue](https://github.com/Opentab1/lordofthepowers/issues).

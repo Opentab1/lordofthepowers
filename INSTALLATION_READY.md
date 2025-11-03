@@ -4,7 +4,7 @@
 
 When users ran the quick start installation command:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 The installation would **fail at step [6/10]** during the dashboard build with this error:
@@ -43,7 +43,7 @@ After pushing this fix to GitHub, users can run the installation command and it 
 
 ### First Run
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 **Timeline**:
@@ -82,8 +82,8 @@ git push origin main
 ```bash
 # On a Raspberry Pi with fresh Raspberry Pi OS:
 cd /tmp
-git clone https://github.com/Opentab1/thefinale2.git
-cd thefinale2
+git clone https://github.com/Opentab1/lordofthepowers.git
+cd lordofthepowers
 sudo ./install.sh
 ```
 
@@ -105,7 +105,7 @@ After deploying the fix, test that:
 ### Update QUICKSTART.md
 The installation command remains the same:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 ### If Users Report Issues

@@ -13,7 +13,7 @@ Ensure you have:
 1. Open terminal on Raspberry Pi
 2. Run installation command:
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+   curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
    ```
 3. Wait for installation to complete (~15-20 minutes)
 4. System should automatically reboot

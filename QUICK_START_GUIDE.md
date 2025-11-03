@@ -2,7 +2,7 @@
 
 ## ✅ What's Done
 
-I've successfully integrated the **working AI people counter** and **song detection** from your party_box repo into thefinale2. Everything is ready to go!
+I've successfully integrated the **working AI people counter** and **song detection** from your party_box repo into lordofthepowers. Everything is ready to go!
 
 ## 🎯 What You Need to Know
 
@@ -21,7 +21,7 @@ I've successfully integrated the **working AI people counter** and **song detect
 
 ### Installation (Unchanged)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 This now:

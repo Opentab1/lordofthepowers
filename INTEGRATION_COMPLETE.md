@@ -1,8 +1,8 @@
-# ✅ Integration Complete: party_box AI → thefinale2
+# ✅ Integration Complete: party_box AI → lordofthepowers
 
 ## What Was Done
 
-I've successfully integrated the **working AI people counter** and **song detection** implementations from your party_box repository into thefinale2 (Pulse 1.0).
+I've successfully integrated the **working AI people counter** and **song detection** implementations from your party_box repository into lordofthepowers (Pulse 1.0).
 
 ## Key Improvements
 
@@ -29,7 +29,7 @@ Just follow your existing quickstart guide - everything will work automatically:
 
 ```bash
 # 1. Install Pulse (one command)
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 
 # 2. Complete setup wizard at http://localhost:9090
 # 3. Dashboard launches at http://localhost:8080 with working AI!
