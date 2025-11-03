@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse - Loading...</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .status {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            opacity: 0.9;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .info {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .error {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">⚡</div>
+        <h1>Pulse</h1>
+        <div class="status" id="status">Connecting to system...</div>
+        <div class="spinner"></div>
+        <div class="info" id="info">
+            Checking services...
+        </div>
+        <div class="error" id="error"></div>
+    </div>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const infoEl = document.getElementById('info');
+        const errorEl = document.getElementById('error');
+        
+        // Get preferred target from URL params
+        const params = new URLSearchParams(window.location.search);
+        const preferred = params.get('preferred') || 'wizard';
+        
+        const WIZARD_URL = 'http://localhost:9090';
+        const DASHBOARD_URL = 'http://localhost:8080';
+        
+        let checkCount = 0;
+        const maxChecks = 30; // Try for 30 seconds
+        
+        async function checkService(url) {
+            try {
+                const response = await fetch(url, { 
+                    method: 'HEAD',
+                    mode: 'no-cors',
+                    cache: 'no-cache'
+                });
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        async function tryConnect() {
+            checkCount++;
+            
+            if (checkCount > maxChecks) {
+                statusEl.textContent = 'Services not available';
+                infoEl.textContent = 'Please check system logs';
+                errorEl.textContent = 'Dashboard (8080) and Wizard (9090) not responding. Try: sudo systemctl status pulse';
+                errorEl.style.display = 'block';
+                return;
+            }
+            
+            // Try preferred service first
+            if (preferred === 'wizard') {
+                statusEl.textContent = 'Looking for setup wizard...';
+                const wizardReady = await checkService(WIZARD_URL);
+                if (wizardReady) {
+                    statusEl.textContent = 'Redirecting to setup wizard...';
+                    window.location.href = WIZARD_URL;
+                    return;
+                }
+                
+                // If wizard not found, try dashboard
+                const dashReady = await checkService(DASHBOARD_URL);
+                if (dashReady) {
+                    statusEl.textContent = 'Redirecting to dashboard...';
+                    window.location.href = DASHBOARD_URL;
+                    return;
+                }
+            } else {
+                statusEl.textContent = 'Looking for dashboard...';
+                const dashReady = await checkService(DASHBOARD_URL);
+                if (dashReady) {
+                    statusEl.textContent = 'Redirecting to dashboard...';
+                    window.location.href = DASHBOARD_URL;
+                    return;
+                }
+                
+                // If dashboard not found, try wizard
+                const wizardReady = await checkService(WIZARD_URL);
+                if (wizardReady) {
+                    statusEl.textContent = 'Redirecting to setup wizard...';
+                    window.location.href = WIZARD_URL;
+                    return;
+                }
+            }
+            
+            // Neither service ready, show progress and retry
+            infoEl.textContent = `Waiting for services... (${checkCount}/${maxChecks})`;
+            setTimeout(tryConnect, 1000);
+        }
+        
+        // Start checking after a brief moment
+        setTimeout(tryConnect, 500);
+    </script>
+</body>
+</html>

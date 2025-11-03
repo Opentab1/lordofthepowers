@@ -181,8 +181,8 @@ chmod +x "$INSTALL_DIR/install.sh"
 chmod +x "$INSTALL_DIR/START_HERE.sh" 2>/dev/null || true
 chmod +x "$INSTALL_DIR/RUN_ME.sh" 2>/dev/null || true
 chmod +x "$INSTALL_DIR/start-pulse-anywhere" 2>/dev/null || true
-chmod +x "$INSTALL_DIR/run_pulse_system.py" 2>/dev/null || true
-chmod +x "$INSTALL_DIR/diagnose_sensors.py" 2>/dev/null || true
+chmod +x "$INSTALL_DIR/services/hub/run_pulse_system.py" 2>/dev/null || true
+chmod +x "$INSTALL_DIR/services/sensors/diagnose_sensors.py" 2>/dev/null || true
 
 # Populate AI model files (MobileNet-SSD) if missing
 SSD_PROTO="$INSTALL_DIR/models/MobileNetSSD_deploy.prototxt"
