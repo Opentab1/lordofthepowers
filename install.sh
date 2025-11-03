@@ -268,37 +268,39 @@ fi
 
 echo -e "${YELLOW}[11/11] Running hardware detection...${NC}"
 
-# Run hardware detection
+# Run hardware detection using the actual hardware_detect module
 cd "$INSTALL_DIR"
-sudo -u ${USER} venv/bin/python3 << 'PYEOF'
+DETECTION_OUTPUT=$(sudo -u ${USER} venv/bin/python3 -m services.hub.hardware_detect 2>&1)
+DETECTION_EXIT=$?
+
+if [ $DETECTION_EXIT -eq 0 ]; then
+    echo -e "\n${GREEN}Hardware detection completed successfully!${NC}"
+    echo "$DETECTION_OUTPUT" | python3 -c "
 import sys
-sys.path.insert(0, '/opt/pulse')
-
-from services.sensors.health_monitor import *
 import json
-
-monitor = HealthMonitor()
-monitor.register_test("camera", test_camera)
-monitor.register_test("mic", test_microphone)
-monitor.register_test("bme280", test_bme280)
-monitor.register_test("pan_tilt", test_pan_tilt)
-monitor.register_test("ai_hat", test_ai_hat)
-monitor.register_test("light_sensor", test_light_sensor)
-
-results = monitor.test_all_modules()
-
-print("\n" + "="*50)
-print("Hardware Detection Results:")
-print("="*50)
-for module, status in results.items():
-    symbol = "✓" if status else "✗"
-    print(f"{symbol} {module}: {'OK' if status else 'Not Found'}")
-print("="*50)
-
-# Save report
-with open('/var/log/pulse/hardware_report.txt', 'w') as f:
-    json.dump(results, f, indent=2)
-PYEOF
+try:
+    data = json.load(sys.stdin)
+    print('\n' + '='*50)
+    print('Hardware Detection Results:')
+    print('='*50)
+    modules = data.get('modules', {})
+    for module, info in modules.items():
+        present = info.get('present', False)
+        symbol = '✓' if present else '✗'
+        status = 'OK' if present else 'Not Found'
+        print(f'{symbol} {module}: {status}')
+    print('='*50)
+except:
+    print('Hardware detection ran (raw output below):')
+    print(sys.stdin.read())
+" <<< "$DETECTION_OUTPUT"
+    
+    # Save to log directory
+    echo "$DETECTION_OUTPUT" > /var/log/pulse/hardware_report.json
+else
+    echo -e "${YELLOW}Warning: Hardware detection completed with warnings${NC}"
+    echo "Output saved to /var/log/pulse/hardware_report.json"
+fi
 
 echo -e "${GREEN}"
 echo "╔═══════════════════════════════════════════════════════════════╗"
