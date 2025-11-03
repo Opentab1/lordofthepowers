@@ -1,1 +1,17 @@
-[Unit]\nDescription=Pulse dashboard web server\nAfter=network.target\n\n[Service]\nType=simple\nUser=pi\nWorkingDirectory=/opt/pulse/dashboard/api\nExecStart=/usr/bin/npm start --silent\nRestart=always\nRestartSec=3\nStandardOutput=append:/var/log/pulse/dashboard.log\nStandardError=append:/var/log/pulse/dashboard.err\n\n[Install]\nWantedBy=multi-user.target\n
+[Unit]
+Description=Pulse dashboard web server
+After=network.target pulse-hub.service
+Wants=pulse-hub.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/opt/pulse/dashboard/server
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=3
+StandardOutput=append:/var/log/pulse/dashboard.log
+StandardError=append:/var/log/pulse/dashboard.err
+
+[Install]
+WantedBy=multi-user.target

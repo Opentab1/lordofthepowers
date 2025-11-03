@@ -1,17 +1,33 @@
 # Pulse 1.0 - Troubleshooting Guide
 
-## 🚨 Quick Fix: White Screen After Installation
+## 🚨 Quick Fix: Display Not Loading
 
-**Problem:** After running the quick setup and rebooting, you see only a white screen with a cursor.
+**Problem:** After running the quick setup and rebooting, the display doesn't load correctly. You see either a white screen, kiosk fallback page, or nothing loads.
 
 **Quick Solution:**
+
+### Automated Fix (Recommended)
+```bash
+cd /opt/pulse
+sudo ./fix_display.sh
+```
+
+### Manual Fix
 1. Press `Ctrl+Alt+F2` to get to terminal
 2. Login as `pi`
 3. Run: `pkill chromium`
 4. Run: `export DISPLAY=:0 && /opt/pulse/dashboard/kiosk/start.sh`
 5. The wizard should now open at `http://localhost:9090`
 
-**Or simply:** Press `ESC`, then manually navigate Chromium to `http://localhost:9090`
+**Or simply:** Press `ESC`, then manually navigate Chromium to `http://localhost:9090` (first boot) or `http://localhost:8080` (after wizard)
+
+### Diagnostic Tool
+```bash
+cd /opt/pulse
+./diagnose_display.sh
+```
+
+📖 **See [DISPLAY_LOADING_FIX.md](DISPLAY_LOADING_FIX.md) for complete details on this fix.**
 
 See detailed recovery steps below ⬇️
 
