@@ -49,7 +49,7 @@ When testing this fix on an actual Raspberry Pi:
 
 1. **Fresh Installation Test:**
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+   curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
    ```
    - Verify installation completes
    - Verify automatic reboot occurs

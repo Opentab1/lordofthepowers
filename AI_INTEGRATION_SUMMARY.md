@@ -1,7 +1,7 @@
-# AI Integration Summary - party_box → thefinale2
+# AI Integration Summary - party_box → lordofthepowers
 
 ## Overview
-Successfully integrated working AI people counter and song detection implementations from the [party_box](https://github.com/Opentab1/party_box) repository into thefinale2 (Pulse 1.0).
+Successfully integrated working AI people counter and song detection implementations from the [party_box](https://github.com/Opentab1/party_box) repository into lordofthepowers (Pulse 1.0).
 
 ## What Was Integrated
 
@@ -279,8 +279,8 @@ python3 -c "from shazamio import Shazam; print('OK')"
   - Person detection and tracking algorithms
   - Song detection integration
 
-- **thefinale2 (Pulse 1.0)**: Target integration platform
-  - Repository: https://github.com/Opentab1/thefinale2
+- **lordofthepowers (Pulse 1.0)**: Target integration platform
+  - Repository: https://github.com/Opentab1/lordofthepowers
   - Venue automation and dashboard system
 
 ## Next Steps

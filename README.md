@@ -7,7 +7,7 @@
 **One-line installation:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
 ```
 
 This will:
@@ -69,8 +69,8 @@ If you prefer manual installation:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Opentab1/thefinale2.git
-cd thefinale2
+git clone https://github.com/Opentab1/lordofthepowers.git
+cd lordofthepowers
 
 # 2. Run installation
 sudo bash install.sh
@@ -221,7 +221,7 @@ See LICENSE file for details.
 
 1. **Install:**
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/Opentab1/thefinale2/main/install.sh | sudo bash
+   curl -fsSL https://raw.githubusercontent.com/Opentab1/lordofthepowers/main/install.sh | sudo bash
    ```
 
 2. **The system auto-starts on boot** with the dashboard
