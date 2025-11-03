@@ -1,0 +1,71 @@
+venue:
+  name: "Pulse Venue"
+  timezone: "America/Chicago"
+
+zones:
+  - name: "Main Floor"
+  - name: "Patio"
+
+modules:
+  camera: true
+  mic: true
+  bme280: true
+  light_sensor: true
+  ai_hat: true
+  pan_tilt: true
+
+smart_integrations:
+  hvac:
+    enabled: false
+    provider: "nest"
+    device_id: ""
+  lighting:
+    enabled: false
+    provider: "hue"
+    bridge_ip: ""
+  tv:
+    enabled: false
+    provider: "cec"
+    devices: []
+  music:
+    enabled: false
+    provider: "spotify"
+    playlist_uri: ""
+
+policies:
+  hvac:
+    min_f: 67
+    max_f: 75
+    auto_mode: true
+    max_change_per_10min: 1.0
+  lighting:
+    min_pct: 20
+    max_pct: 85
+    auto_mode: true
+    max_change_per_10min: 10
+  music:
+    volume_min: 25
+    volume_max: 70
+    auto_mode: true
+    max_change_per_3min: 5
+  tv:
+    auto_mode: true
+
+recovery:
+  auto_disable_failed_modules: true
+  retry_interval_seconds: 60
+  max_retries: 5
+
+logging:
+  level: "INFO"
+  path: "/var/log/pulse"
+  max_size_mb: 100
+  backup_count: 5
+
+dashboard:
+  port: 8080
+  websocket_enabled: true
+
+wizard:
+  port: 9090
+  completed: false
